@@ -1,5 +1,7 @@
 # Djikstra-Pixel-Marcher
-Given a PPM image, outputs solution visualizing shortest path of minimal pixel gradient using Djikstra's algorithm.
+Given a PPM image, outputs solution visualizing shortest path of minimal pixel gradient.
+
+Uses Djikstra's Algorithm and priority queue (Min heap implementation)
 
 ![alt text](https://raw.githubusercontent.com/RylandWang/Djikstra-Pixel-Marcher/master/output/JPG/Path-bigmaze.jpg)
 
