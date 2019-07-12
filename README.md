@@ -1,5 +1,5 @@
 # Djikstra-Pixel-Marcher
-Finds shortest path of minimal pixel gradient using Djikstra's algorithm.
+Given a PPM image, outputs solution visualizing shortest path of minimal pixel gradient using Djikstra's algorithm.
 
 ![alt text](https://raw.githubusercontent.com/RylandWang/Djikstra-Pixel-Marcher/master/output/JPG/Path-bigmaze.jpg)
 
