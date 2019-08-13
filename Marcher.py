@@ -8,12 +8,10 @@ class Marcher:
         def __init__(self, x, y, cost, previous = None):
             # Previous pixel - for backtracking a path
             self.prev = previous 
-            
             # pixel coordinates
             self.coord = (x,y)
             self.x = x
             self.y = y
-            
             # cost of travel between this pixel and its previous pixel
             self.cost = cost
     
