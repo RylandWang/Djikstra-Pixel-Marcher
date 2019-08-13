@@ -4,35 +4,7 @@ from os import makedirs, path
 
 class Map:
     """
-    This class is used to store the image in memory. It has the following fields:
-
-    - fileName : Name of the image opened
-
-    - img : The image object (used to output)
-
-    - pixels : The 2D array containing pixel data. You will be using this for weights. 
-                Each element is a 3-tuple representing the (R,G,B) values. Each of these 
-                is an integer between 0 and 255.
-
-                For example, if the pixel at (5,3) is Red,
-                  pixels[(5,3)] = (255,0,0)
-
-                Or, other notation you should be familiar with:
-                  pixels[5][3][0] = 255   # Red
-                  pixels[5][3][2] = 0     # Blue
-                  pixels[5][3][3] = 0     # Green
-
-    - sx, sy : The x and y dimensions of the image. Remember that the top left pixel (start) 
-               is at (0,0). x increases as you go right, and y increases as you go down. The 
-               bottom right pixel (target) is located at (sx-1, sy-1)
-
-    - path : Initialized to be an empty array, but you need to add in the pixels along the 
-             leastenergy path in here to have it output correctly. Each element in this should 
-             be a tuple of (x,y) coordinates in order of the path you have found.
-
-             For example:
-             path = [(0,0), (0,1), (1,1), ... , (sx-1, sy-1)]
-
+    This class store image data
     """
 
     def __init__(self, filePath):
