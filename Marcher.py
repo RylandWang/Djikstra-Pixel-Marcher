@@ -3,7 +3,7 @@ class Marcher:
     
     class PixelNode():
         '''
-        A node represents one pixel (and its attributes) in the image
+        A node represents one pixel (and its attributes)
         '''
         def __init__(self, x, y, cost, previous = None):
             # Previous pixel - for backtracking a path
@@ -20,9 +20,7 @@ class Marcher:
         '''
         Min heap (list) implementation of priority queue
         '''
-        
         class PQNode():
-            
             def __init__(self, data, priority):
                 self.data = data
                 self.priority = priority        
@@ -47,10 +45,8 @@ class Marcher:
             Return element of min priority from PQ, consequently removing it
             from the heap
             '''
-            
             if self.size == 0:
                 return None
-            
             popped = self.nodes[0].data
             
             # replace root node with right-bottom-most child node
@@ -94,7 +90,6 @@ class Marcher:
                         temp = p
                         self.nodes[parent] = c2
                         self.nodes[children[1]] = temp
-                        
                         # update parent node index
                         parent = children[1]
                         
@@ -104,7 +99,6 @@ class Marcher:
                         temp = p
                         self.nodes[parent] = c1
                         self.nodes[children[0]] = temp
-                        
                         # update parent node index
                         parent = children[0]
                         
@@ -113,7 +107,6 @@ class Marcher:
                         temp = p
                         self.nodes[parent] = c2
                         self.nodes[children[1]] = temp
-                        
                         # update parent node index
                         parent = children[1]
                         
@@ -122,26 +115,23 @@ class Marcher:
                         temp = p
                         self.nodes[parent] = c1
                         self.nodes[children[0]] = temp
-                        
                         # update parent node index
                         parent = children[0]
                         
-                        
                 # if parent has one child
                 else:
-                    
                     # left child (only child) is smaller
                     if p.priority > c1.priority:
                         # swap parent with its left child
                         temp = p
                         self.nodes[parent] = c1
                         self.nodes[children[0]] = temp
-                        
                         # update parent node index
                         parent = children[0]                        
                         
                 children = self._childrenIndex(parent)
               
+
         def _childrenIndex(self, index):
             '''
             Compute and returns indices of children nodes and given parent index
@@ -151,7 +141,7 @@ class Marcher:
             
             if (child1 >= self.size):
                 child1 = None
-            
+                
             if (child2 >= self.size):
                 child2 = None
             
@@ -165,10 +155,8 @@ class Marcher:
             
             # ceiling of (index - 2) / 2 
             result = -(-(index - 2) // 2)
-            
             if result < 0:
                 return None
-            
             return result
             
             
@@ -187,7 +175,6 @@ class Marcher:
                 temp = self.nodes[parent]
                 self.nodes[parent] = self.nodes[child]
                 self.nodes[child] = temp
-            
                 # update indexes
                 child = parent
                 parent = self._parentIndex(child)
@@ -196,25 +183,9 @@ class Marcher:
     @staticmethod
     def findPath(mp, weight):
         """
-        Objective: To find the least-energy path from pixel (0,0) to pixel(sx-1, sy-1), along
-            with the amount of energy required to traverse this path. Here, sx and sy are the x and y 
-            dimensions of the image. (These are stored in 'mp')
-        
-        Input: 
-            mp - This is a Map object representing the image you are working on. Look at the Map
-                class to see details on how we are representing the data.
-
-            weight - This is the weight **function**. You are supposed to use this to find the energy
-                required for each step by the Pixel Marcher. This function should be called like this:
-        total_cost = 0 # total energy cost
-                      weight(mp, (x        total_cost = 0 # total energy cost,y), (a, b))
-        total_cost = 0 # total energy cost
-                to find the energy         total_cost = 0 # total energy costneeded to step from pixel (x,y) to pixel (a,b). Note that
-                this function may return a value for *any* pair of pixels, and it is your job
-                to only be consider valid steps (More on this below). In general this returns a float.
-
-                The return value of this function will always be non-negative, and it is not necessarily
-                the case that weight(mp, a, b) = weight(mp, b, a).
+        Finds the least-energy path from pixel (0,0) to pixel(sx-1, sy-1), along
+        with the amount of energy required to traverse this path. Here, sx and sy are the x and y 
+        dimensions of the image. (These are stored in 'mp')
         """
         
         PQ = Marcher.PriorityQueue()
@@ -222,7 +193,7 @@ class Marcher:
         # add starting pixel to priority queue with default weight 0
         PQ.add(Marcher.PixelNode(0,0,0, None), 0)
         
-        # store visited coordinates for constant lookup
+        # store visited coordinates in set for O(1) lookup
         visited = {}
         visited[(0,0)] = True
         
@@ -233,86 +204,31 @@ class Marcher:
         # add each neighbor to priority queue if not already visited
         while cur is not None:
             
-            # visit above pixel
-            if ((0 <= cur.y-1 <= mp.sy-1) 
-                and (cur.x, cur.y-1) not in visited):
-                # next pixel coordinates
-                i = cur.x
-                j = cur.y-1
+            # visit each of 4 neighboring pixels starting at top in clockwise fashion
+            for (x,y) in [(cur.x, cur.y-1), (cur.x+1, cur.y), (cur.x, cur.y+1), (cur.x-1, cur.y)]:
                 
-                w = weight(mp, (cur.x, cur.y), (i, j)) + cur.cost
-                n = Marcher.PixelNode(i, j, w, cur)
-                
-                # if end pixel reached
-                if i == mp.sx-1 and j == mp.sy-1:
-                    end_node = n
-                    break
-                
-                # otherwise continue adding new pixel node to PQ
-                PQ.add(n, w)
-                 
-            
-            # visit right pixel
-            if ((0 <= cur.x+1 <= mp.sx-1)
-                and (cur.x+1, cur.y) not in visited):
-                i = cur.x+1
-                j = cur.y
-                
-                w = weight(mp, (cur.x, cur.y), (i, j)) + cur.cost
-                n = Marcher.PixelNode(i, j, w, cur)
-                
-                # if end pixel reached
-                if i == mp.sx-1 and j == mp.sy-1:
-                    end_node = n
-                    break
-                
-                # otherwise continue adding new pixel node to PQ
-                PQ.add(n, w)
-      
-            
-            # visit below pixel
-            if ((0 <= cur.y+1 <= mp.sy-1)
-                and (cur.x, cur.y+1) not in visited):
-                i = cur.x
-                j = cur.y+1
-                
-                w = weight(mp, (cur.x, cur.y), (i, j)) + cur.cost
-                n = Marcher.PixelNode(i, j, w, cur)
-                
-                # if end pixel reached
-                if i == mp.sx-1 and j == mp.sy-1:
-                    end_node = n
-                    break
-                
-                # otherwise continue adding new pixel node to PQ
-                PQ.add(n, w)
-                          
-
-            # visit left pixel
-            if ((0 <= cur.x-1 <= mp.sx-1)
-                and (cur.x-1, cur.y) not in visited):
-                i = cur.x-1
-                j = cur.y
-                
-                w = weight(mp, (cur.x, cur.y), (i, j)) + cur.cost
-                n = Marcher.PixelNode(i, j, w, cur)
-                
-                # if end pixel reached
-                if i == mp.sx-1 and j == mp.sy-1:
-                    end_node = n
-                    break
-                
-                # otherwise continue adding new pixel node to PQ
-                PQ.add(n, w)
-     
+                if ((0 <= x <= mp.sx-1) 
+                    and (0 <= y <= mp.sy-1) 
+                    and (x, y) not in visited):
+                    
+                    
+                    cost = weight(mp, (cur.x, cur.y), (x, y)) + cur.cost
+                    n = Marcher.PixelNode(x, y, cost, cur)
+                    
+                    # if end pixel reached
+                    if x == mp.sx-1 and y == mp.sy-1:
+                        end_node = n
+                        break
+                    
+                    # otherwise continue adding new pixel node to PQ
+                    PQ.add(n, cost)
 
             cur = PQ.pop()
             
             while (cur.x, cur.y) in visited:
                 cur = PQ.pop()
 
-            visited[(cur.x, cur.y)] = True    
-                        
+            visited[(cur.x, cur.y)] = True                
 
         # retrace all nodes of the least path
         # sum up total cost and add coordinate of each node to mp.path
@@ -321,9 +237,6 @@ class Marcher:
             while prev_node is not None:
                 # print(prev_node.coord, prev_node.cost)
                 mp.path.append(prev_node.coord)
-                
                 prev_node = prev_node.prev
 
-
-        #print(total_cost)
         return end_node.cost

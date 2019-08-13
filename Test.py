@@ -53,11 +53,5 @@ class TestMarcher(unittest.TestCase):
         self.assertAlmostEqual(cost, 2168.3216577, 5)
 
 
-    def test_25_Colours(self):
-        inp = Map("images/25colours.ppm")
-
-        Marcher.findPath(inp, Marcher.all_colour_weight)
-
-
 if __name__ == "__main__":
     unittest.main()
