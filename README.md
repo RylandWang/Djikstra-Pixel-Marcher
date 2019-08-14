@@ -11,18 +11,16 @@ cd into directory where repo was cloned
 ```shell
     python RunMarcher.py
 ```
-For details on command line options, run:
+For details on more command line options such as bulk parsing, run:
 ```shell
     python RunMarcher.py --help
 ```
 
 ## Implementation
-Djikstra's algorithm using priority queue (min heap implementation)
+Implemented using Djikstra's algorithm and priority queue (min heap implementation)
 
 ## Authors
 * **Ryland Wang** 
-
-Uses Djikstra's Algorithm and priority queue (Min heap implementation)
 
 ![alt text](https://raw.githubusercontent.com/RylandWang/Djikstra-Pixel-Marcher/master/output/examples/Path-bigmaze.jpg)
 
