@@ -8,10 +8,9 @@ cd into directory where repo was cloned
 ```
 
 ## How To Run
-
-### Steps
-- `git clone` repo, `cd` into directory
-- `python RunMarcher.py`
+```shell
+    python RunMarcher.py
+```
 
 For details on more command line options such as bulk parsing, run:
 ```shell
