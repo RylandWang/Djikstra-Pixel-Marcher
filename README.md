@@ -1,5 +1,5 @@
 # Djikstra Pixel Marcher
-Finds and generates shortest path and/or path of minimal total pixel gradient across image (JPG, PNG, PPM).
+Finds and generates shortest path and/or path of minimal total pixel gradient (difference of adjacent RGB value) across image (JPG, PNG, PPM).
 
 ## Installation
 cd into directory where repo was cloned
