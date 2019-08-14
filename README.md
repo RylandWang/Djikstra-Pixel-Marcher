@@ -16,6 +16,7 @@ For details on more command line options such as bulk parsing, run:
     python RunMarcher.py --help
 ```
 
+## Sample output paths generated
 ![alt text](https://raw.githubusercontent.com/RylandWang/Djikstra-Pixel-Marcher/master/output/examples/Path-bigmaze.jpg)
 
 ![alt text](https://raw.githubusercontent.com/RylandWang/Djikstra-Pixel-Marcher/master/output/examples/Path-maze.jpg)
