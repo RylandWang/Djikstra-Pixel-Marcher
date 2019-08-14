@@ -1,7 +1,6 @@
 from PIL import Image
 from os import makedirs, path
 
-
 class Map:
     """
     This class store image data
@@ -11,18 +10,15 @@ class Map:
         with open(filePath, 'rb') as img_handle:
             self.fileName = path.basename(filePath)
             self.img = Image.open(img_handle)
-            (sx, sy) = self.img.size
+            (self.sx, self.sy) = self.img.size
             self.pixels = self.img.load()
             self.path = []
-            self.sx = sx
-            self.sy = sy
 
     def outputPath(self):
         """
         Outputs an image with the name Path-<fileName> (in the 'output' folder) which displays the path 
         stored in self.path. The path is coloured green, with pixels at start being a brighter green 
         and towards the end being a darker green. 
-
         """
         if self.path == []:
             print('Nothing in path. Skipping output...')
