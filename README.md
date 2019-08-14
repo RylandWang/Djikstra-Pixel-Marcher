@@ -1,5 +1,5 @@
 # Djikstra Pixel Marcher
-Generates shortest path and/or path of minimal total pixel gradient across image. Impelment
+Generates shortest path and/or path of minimal total pixel gradient across image.
 
 ## Installation
 cd into directory where repo was cloned
@@ -16,12 +16,6 @@ For details on more command line options such as bulk parsing, run:
     python RunMarcher.py --help
 ```
 
-## Implementation
-Implemented using Djikstra's algorithm and priority queue (min heap implementation)
-
-## Authors
-* **Ryland Wang** 
-
 ![alt text](https://raw.githubusercontent.com/RylandWang/Djikstra-Pixel-Marcher/master/output/examples/Path-bigmaze.jpg)
 
 ![alt text](https://raw.githubusercontent.com/RylandWang/Djikstra-Pixel-Marcher/master/output/examples/Path-maze.jpg)
@@ -31,3 +25,11 @@ Implemented using Djikstra's algorithm and priority queue (min heap implementati
 ![alt text](https://raw.githubusercontent.com/RylandWang/Djikstra-Pixel-Marcher/master/output/examples/Path-water.jpg)
 
 ![alt text](https://raw.githubusercontent.com/RylandWang/Djikstra-Pixel-Marcher/master/output/examples/Path-scream.jpg)
+
+## Implementation
+Implemented using Djikstra's algorithm and priority queue (min heap implementation)
+
+## Authors
+* **Ryland Wang** 
+
+
