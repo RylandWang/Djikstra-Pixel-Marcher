@@ -28,7 +28,9 @@ For details on more command line options such as bulk parsing, run:
 ![alt text](https://raw.githubusercontent.com/RylandWang/Djikstra-Pixel-Marcher/master/output/examples/Path-scream.png)
 
 ## Implementation
-Implemented using Djikstra's algorithm and priority queue (min heap implementation)
+*Algorithms: Djikstra's path finding algorithm, Min heapify
+*Data Stuctures: Priority queue (min heap implementation)
+*Libraries/API: PIL (image parsing), tKinter (GUI), argparse (command line arugment parsing)
 
 ## Authors
 * **Ryland Wang** 
