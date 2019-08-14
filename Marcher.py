@@ -1,4 +1,3 @@
-
 class Marcher:
     
     class PixelNode():
@@ -14,8 +13,7 @@ class Marcher:
             self.y = y
             # cost of travel between this pixel and its previous pixel
             self.cost = cost
-    
-        
+      
     class PriorityQueue():
         '''
         Min heap (list) implementation of priority queue
@@ -28,7 +26,6 @@ class Marcher:
         def __init__(self):
             self.nodes = []
             self.size = 0
-        
         
         def add(self, data, priority):
             
@@ -64,7 +61,6 @@ class Marcher:
             '''
             Update (percolate down) root node position until heap properties is satisfied
             '''
-            
             parent = 0
             children = self._childrenIndex(parent)
             
@@ -131,7 +127,6 @@ class Marcher:
                         
                 children = self._childrenIndex(parent)
               
-
         def _childrenIndex(self, index):
             '''
             Compute and returns indices of children nodes and given parent index
@@ -147,7 +142,6 @@ class Marcher:
             
             return (child1, child2)
                 
-                  
         def _parentIndex(self, index):
             '''
             Compute and returns index of parent node at specified child index
@@ -158,8 +152,7 @@ class Marcher:
             if result < 0:
                 return None
             return result
-            
-            
+                
         def _heapifyUp(self):
             '''
             Update (percolate up) newly inserted node position until heap property is satisfied
@@ -179,7 +172,7 @@ class Marcher:
                 child = parent
                 parent = self._parentIndex(child)
                 
-        
+     
     @staticmethod
     def findPath(mp, weight):
         """
@@ -199,30 +192,31 @@ class Marcher:
         
         cur = PQ.pop()
         end_node = None # construct PixelNode once end reached
+        end = False
         
         # check current pixel's neighbors
         # add each neighbor to priority queue if not already visited
         while cur is not None:
-            
-            # visit each of 4 neighboring pixels starting at top in clockwise fashion
+            # # visit each of 4 neighboring pixels starting at top in clockwise fashion
             for (x,y) in [(cur.x, cur.y-1), (cur.x+1, cur.y), (cur.x, cur.y+1), (cur.x-1, cur.y)]:
                 
-                if ((0 <= x <= mp.sx-1) 
-                    and (0 <= y <= mp.sy-1) 
+                if ((x!=cur.x and 0 <= x <= mp.sx-1) 
+                    or (y!=cur.y and 0 <= y <= mp.sy-1) 
                     and (x, y) not in visited):
-                    
-                    
+
                     cost = weight(mp, (cur.x, cur.y), (x, y)) + cur.cost
                     n = Marcher.PixelNode(x, y, cost, cur)
                     
                     # if end pixel reached
                     if x == mp.sx-1 and y == mp.sy-1:
                         end_node = n
+                        end = True
                         break
-                    
                     # otherwise continue adding new pixel node to PQ
                     PQ.add(n, cost)
 
+            if end:
+                break
             cur = PQ.pop()
             
             while (cur.x, cur.y) in visited:
