@@ -1,12 +1,35 @@
-# Djikstra-Pixel-Marcher
-Given a PPM image, outputs solution visualizing shortest path of minimal pixel gradient.
+# Djikstra Pixel Marcher
+Finds and generates shortest path and/or path of minimal total pixel gradient across image (JPG, PNG, PPM).
 
-Uses Djikstra's Algorithm and priority queue (Min heap implementation)
+## Installation
+cd into directory where repo was cloned
+```shell
+    pip install -r requirements.txt
+```
 
-![alt text](https://raw.githubusercontent.com/RylandWang/Djikstra-Pixel-Marcher/master/output/JPG/Path-bigmaze.jpg)
+## How To Run
+```shell
+    python RunMarcher.py
+```
+For details on more command line options such as bulk parsing, run:
+```shell
+    python RunMarcher.py --help
+```
 
-![alt text](https://raw.githubusercontent.com/RylandWang/Djikstra-Pixel-Marcher/master/output/JPG/Path-maze.jpg)
+![alt text](https://raw.githubusercontent.com/RylandWang/Djikstra-Pixel-Marcher/master/output/examples/Path-bigmaze.jpg)
 
-![alt text](https://raw.githubusercontent.com/RylandWang/Djikstra-Pixel-Marcher/master/output/JPG/Path-spiral.jpg)
+![alt text](https://raw.githubusercontent.com/RylandWang/Djikstra-Pixel-Marcher/master/output/examples/Path-maze.jpg)
 
-![alt text](https://raw.githubusercontent.com/RylandWang/Djikstra-Pixel-Marcher/master/output/JPG/Path-water.jpg)
+![alt text](https://raw.githubusercontent.com/RylandWang/Djikstra-Pixel-Marcher/master/output/examples/Path-wallpaper.jpg)
+
+![alt text](https://raw.githubusercontent.com/RylandWang/Djikstra-Pixel-Marcher/master/output/examples/Path-water.jpg)
+
+![alt text](https://raw.githubusercontent.com/RylandWang/Djikstra-Pixel-Marcher/master/output/examples/Path-scream.jpg)
+
+## Implementation
+Implemented using Djikstra's algorithm and priority queue (min heap implementation)
+
+## Authors
+* **Ryland Wang** 
+
+
