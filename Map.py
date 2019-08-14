@@ -14,7 +14,7 @@ class Map:
             self.pixels = self.img.load()
             self.path = []
 
-    def outputPath(self):
+    def outputPath(self, output_path):
         """
         Outputs an image with the name Path-<fileName> (in the 'output' folder) which displays the path 
         stored in self.path. The path is coloured green, with pixels at start being a brighter green 
@@ -24,7 +24,7 @@ class Map:
             print('Nothing in path. Skipping output...')
             return
 
-        makedirs('output', exist_ok=True)
+        makedirs(output_path, exist_ok=True)
         # Scaling factor to gradually change colour
         ptImg = self.img.copy()
         ptPix = ptImg.load()

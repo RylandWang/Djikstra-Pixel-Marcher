@@ -180,7 +180,6 @@ class Marcher:
         with the amount of energy required to traverse this path. Here, sx and sy are the x and y 
         dimensions of the image. (These are stored in 'mp')
         """
-        
         PQ = Marcher.PriorityQueue()
         
         # add starting pixel to priority queue with default weight 0
