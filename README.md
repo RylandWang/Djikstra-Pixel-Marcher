@@ -24,7 +24,7 @@ For details on more command line options such as bulk parsing, run:
 
 ![alt text](https://raw.githubusercontent.com/RylandWang/Djikstra-Pixel-Marcher/master/output/examples/Path-water.jpg)
 
-![alt text](https://raw.githubusercontent.com/RylandWang/Djikstra-Pixel-Marcher/master/output/examples/Path-scream.jpg)
+![alt text](https://raw.githubusercontent.com/RylandWang/Djikstra-Pixel-Marcher/master/output/examples/Path-scream.png)
 
 ## Implementation
 Implemented using Djikstra's algorithm and priority queue (min heap implementation)
